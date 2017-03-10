@@ -1,7 +1,9 @@
 Lab 2 - Buffer Overflow
 =======================
 
-Instructions to run application
-```
-g++ -std=c++11 -fno-stack-protection buffer_overflow.cpp && ./a.out
-```
+Welcome to the SMU Ticket Office! Here you can buy tickets to SMU's upcoming
+basketball games. The goal is to try and get us to pay you for the tickets.
+
+
+To compile: `make`
+To run: `make run`

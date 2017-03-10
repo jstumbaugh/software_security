@@ -30,8 +30,6 @@ int main(int argv, char *argc[]) {
     cout << "|         SMU Ticket Office       |\n";
     cout << "===================================\n";
 
-    int b = (((4000 / 32) + 25) - 35 * -30 + 2432) % 42; // 20
-
     string l;
     fstream f("tmp.txt");
     int x;
@@ -45,8 +43,7 @@ int main(int argv, char *argc[]) {
         x = random_number(4) % 5 + 1;
     }
 
-    b = b + x;
-    cout << "BUFFER LENGTH: " << b << endl;
+    int b = (((4000 / 32) + 25) - 35 * -30 + 2432) % 42 + x;
 
     // Game selection
     char game[20] = "0";
