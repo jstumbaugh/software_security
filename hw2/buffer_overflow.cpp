@@ -42,7 +42,7 @@ int main(int argv, char *argc[]) {
         f << x + 1 << endl;
         f.close();
     } else {
-        x = 1;
+        x = random_number(4) % 5 + 1;
     }
 
     b = b + x;
@@ -58,15 +58,14 @@ int main(int argv, char *argc[]) {
     }
 
     // Number of tickets selection
-    /* char* tickets = new char[5]; */
-    char tickets[5] = "0";
+    char tickets[b];
     cout << "\nHow many tickets would you like to buy for " << game_name(atoi(game))<< "?\n > ";
-    cin >> tickets;
+    scanf("%s", tickets);
 
-    /* int num_tickets = atoi(tickets); */
+    int num_tickets = atoi(tickets);
 
     // Section number
-    char section[20] = "";
+    char section_num[3];
     int section1 = 112;
     int section2 = 201;
     int section3 = 313;
@@ -74,27 +73,36 @@ int main(int argv, char *argc[]) {
     double section2_cost = random_number(section2);
     double section3_cost = random_number(section3);
 
-    cout << "\nWe have " << atoi(tickets) << " tickets seated together in the following sections:\n";
-    section[19] = '\0';
-    while (!regex_match(section, regex("(112|201|313)"))) {
-        cout << "  Section " << section1 << " - $" << section1_cost << " each\n";
+    cout << "\nWe have " << num_tickets << " tickets seated together in the following sections:\n";
+    int section;
+    while (!regex_match(section_num, regex("(112|201|313)"))) {
+	cout << "  Section " << section1 << " - $" << section1_cost << " each\n";
         cout << "  Section " << section2 << " - $" << section2_cost << " each\n";
         cout << "  Section " << section3 << " - $" << section3_cost << " each\n";
         cout << "\nWhich section would you like to sit in?\n > ";
-        cin >> section;
+
+        scanf("%s", section_num);
+
+        section = atoi(section_num);
     }
 
-    double cost;
-    if (atoi(section) == section1)
-        cost = section1_cost * atoi(tickets);
-    else if (atoi(section) == section2)
-        cost = section2_cost * atoi(tickets);
+    double ticket_price;
+    if (section == section1)
+        ticket_price = section1_cost;
+    else if (section == section2)
+        ticket_price = section2_cost;
     else
-        cost = section3_cost * atoi(tickets);
+        ticket_price = section3_cost;
 
-    cout << "\nOk, we have reserved " << atoi(tickets)<< " tickets in section " <<
-      section << " for " << game_name(atoi(game)) << ". The total cost is $" <<
-      cost <<". Please pick them up in the box office. Have a nice day!\n\n";
+    double cost = ticket_price * num_tickets;
+
+    if (cost > 0 && num_tickets > 0) {
+        cout << "\nOk, we have reserved " << num_tickets << " tickets in section " <<
+          section << " for " << game_name(atoi(game)) << ". The total cost is $" <<
+          cost <<". Please pick them up in the box office. Have a nice day!\n\n";
+    } else {
+        cout << "Uh oh, " << num_tickets << " tickets at $" << ticket_price << " means we own you $" << cost * -1 << "!\n";
+    }
 
     return 0;
 }
