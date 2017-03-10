@@ -10,6 +10,7 @@ run:
 
 clean:
 	@rm -f bo.exe
+	@rm -f tmp.txt
 
 reset:
 	@echo 0 > tmp.txt
