@@ -98,7 +98,7 @@ int main(int argv, char *argc[]) {
           section << " for " << game_name(atoi(game)) << ". The total cost is $" <<
           cost <<". Please pick them up in the box office. Have a nice day!\n\n";
     } else {
-        cout << "Uh oh, " << num_tickets << " tickets at $" << ticket_price << " means we own you $" << cost * -1 << "!\n";
+        cout << "\nUh oh, " << num_tickets << " tickets at $" << ticket_price << " means we own you $" << cost * -1 << "!\n\n";
     }
 
     return 0;
