@@ -6,4 +6,6 @@ basketball games. The goal is to try and get us to pay you for the tickets.
 
 
 To compile: `make`
+
+
 To run: `make run`
